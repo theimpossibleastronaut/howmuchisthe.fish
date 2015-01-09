@@ -3,8 +3,48 @@
     <head>
         <title>How much is the fish?</title>
         <meta charset="utf-8">
+
+        <style>
+            blockquote {
+
+                box-shadow: 0 0 6px rgba(0,0,0,0.5);
+                margin: 0 0 1.5em 0;
+                padding: .75em .5em .75em 1em;
+                background: #fff;
+                font-size: 1em;
+                line-height: 1.5;
+                border: 0;
+                outline: 0;
+                font: inherit;
+                vertical-align: baseline;
+
+                background-repeat: no-repeat;
+                background-position: top left;
+                background-size: 228px;
+                min-height: 200px;
+                min-width: 600px;
+
+            }
+
+            blockquote footer {
+
+                margin: 1em 0 0 228px;
+                font-size: 1em;
+                line-height: 1.5;
+                font: inherit;
+                font-style: italic;
+
+            }
+
+            blockquote p {
+
+                margin: 0 0 0 228px;
+                font-size: 1.5em;
+
+            }
+        </style>
     </head>
-    <body>
+    <body onload="bodyLoad()">
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -15,10 +55,53 @@
           ga('require', 'displayfeatures');
           ga('send', 'pageview');
 
+          function bodyLoad() {
+
+            if ( XMLHttpRequest && JSON ) {
+
+                var xhttp = new XMLHttpRequest();
+                var options = {
+                    url: 'json/daily',
+                    data: null,
+                    type: 'json'
+                };
+
+                xhttp.open( 'GET', options.url, true );
+                xhttp.send( options );
+
+                xhttp.onreadystatechange = function() {
+
+                    if (xhttp.status == 200 && xhttp.readyState == 4) {
+
+                        var jsonObject = JSON.parse( xhttp.responseText );
+
+                        document.querySelector( "#daily-quote-bc" ).style.backgroundImage = "url('" + jsonObject.quote.album_cover + "')";
+                        document.querySelector( "#daily-quote" ).innerHTML = jsonObject.quote.text;
+                        document.querySelector( "#track" ).innerHTML = jsonObject.quote.track;
+                        document.querySelector( "#album" ).innerHTML = jsonObject.quote.album + " (" + jsonObject.quote.year + ")";
+
+                    }
+
+                };
+
+            } else {
+
+                document.querySelector("#daily-quote-bc").remove();
+
+            }
+
+          }
+
         </script>
-	<a href="https://github.com/theimpossibleastronaut/howmuchisthe.fish"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        <a href="https://github.com/theimpossibleastronaut/howmuchisthe.fish"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
         <h1>The one and only Scooter Quote API</h1>
         <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
+
+        <blockquote id="daily-quote-bc" cite="/json/daily">
+            <p id="daily-quote"></p>
+            <footer>&mdash; <cite>H.P. Baxxter<br>Track: <span id="track"></span><br />Album: <span id="album"></span></cite></footer>
+        </blockquote>
+
         <h2>JSON API Endpoints:</h2>
         <p>Posse!, don't use a trailing /, you have been warned.</p>
         <table>
