@@ -7,3 +7,5 @@ node app.js
 ```
 
 Quotes in the model file retain their original copyright, code follows included LICENSE.md file.
+
+Public instance; [howmuchisthe.fish](http://howmuchisthe.fish)
