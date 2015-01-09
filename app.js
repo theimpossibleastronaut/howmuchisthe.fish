@@ -21,8 +21,10 @@ server.get( {path: '/json/daily'}, dailyQuote );
 server.get( {path: '/json/perma/:quoteId'}, fixedQuote );
 
 server.get(/.*/, restify.serveStatic({
-    'directory': '.',
+
+    'directory': 'htdocs',
     'default': 'index.html'
+
 }));
 
 server.listen( bindPort, bindIp, function() {
