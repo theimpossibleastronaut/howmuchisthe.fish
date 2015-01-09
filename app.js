@@ -142,7 +142,7 @@ function setupNLP() {
 
     }
 
-    corpora = corpora.toLowerCase().replace(/[^\w\s]/gim, '');
+    corpora = corpora.toLowerCase().replace(/[^\w\s\']/gim, '');
 
     og = corpora.split(" ");
     bg = [];
@@ -154,8 +154,6 @@ function setupNLP() {
     }
 
     bg =  bg.length ? bg : og;
-
-    buildQuote();
 
 }
 
@@ -183,6 +181,10 @@ function buildQuote() {
         var lToken = tokenList[Math.floor(Math.random() * tokenList.length-1) + 1];
         sTokens.push(lToken[0]);
         searchWord = lToken[1];
+
+        if (i == sLength-1 && lToken[0].length < 4) {
+            sLength++;
+        }
 
     }
 
