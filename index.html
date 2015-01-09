@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How much is the fish?</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-2158627-15', 'auto');
+          ga('require', 'displayfeatures');
+          ga('send', 'pageview');
+
+        </script>
+	<a href="https://github.com/theimpossibleastronaut/howmuchisthe.fish"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        <h1>The one and only Scooter Quote API</h1>
+        <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
+        <h2>JSON API Endpoints:</h2>
+        <p>Posse!, don't use a trailing /, you have been warned.</p>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>/json/random</td>
+                <td>Fetch a random quote</td>
+                <td>Implemented</td>
+            </tr>
+            <tr>
+                <td>/json/daily</td>
+                <td>Fetch the quote of the day</td>
+                <td>Implemented</td>
+            </tr>
+            <tr>
+                <td>/json/perma/&lt;quoteid&gt;</td>
+                <td>Deeplink to your favorite quote</td>
+                <td>Implemented</td>
+            </tr>
+        </table>
+        <h2>Sample data</h2>
+        <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data.</p>
+        <pre>{
+  "id": 34,
+  "permalink": "http://howmuchisthe.fish/json/perma/34",
+  "quote":
+  {
+    "text": "Before success can manifest. You've got to go through the learning process.",
+    "track": "The learning process",
+    "album": "Back To The Heavyweight Jam",
+    "year": "1999",
+    "album_cover": "http://s.pixogs.com/image/R-170668-1409164376-2347.jpeg",
+    "album_information": "http://www.discogs.com/Scooter-Back-To-The-Heavyweight-Jam/master/3868"
+  }
+}</pre>
+        <h2>Implementations</h2>
+        <p>Have a public implementation? Great! Tweet <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> and get it listed here.</p>
+        <p><b>Deelstar</b> <a href='http://deelstar.nl' target='_blank'>http://deelstar.nl</a> - First implementation, and with a marquee no less.<br>
+        <b>@scooterquote</b> <a href='https://twitter.com/scooterquote' target='_blank'>on twitter</a> - From the same guy that brought you <a href='http://bierfoto.nl' target='_blank'>bierfoto.nl</a>.<br>
+        <b>how_much_is_the_fish rubygem</b> <a href="http://rubygems.org/gems/how_much_is_the_fish" target="_blank">on rubygems</a>, <a href="https://github.com/ivdma/howmuchisthe.fish" target="_blank">on github</a> - a wrapper in ruby by <a href="https://twitter.com/ivdma" target="_blank">@ivdma</a>.<br>
+        <b>Piping into whatever</b> <a href="https://gist.github.com/sexybiggetje/3185938503299641d233" target="_blank">on github</a> - a gist explaining how to pipe the json with jq and curl into your favorite shell.
+        </p>
+        <h2>Greetz</h2>
+        <p>In great Scooter fashion: We want to sing a big shout to <a href="http://www.bierfoto.nl" target="_blank">bierfoto</a>, and to all ravers in the world! And to H.P. Baxxter, Phil Speiser, Michael Simon, Ferris Bueller, Rick Jordan, Frank Visser, Fatman Scoop, The Bloodhound Gang, Status Quo, Jens Thele and to Winkelcentrum Woensel.</p>
+        <h2>Maximum respect</h2>
+        <p>Credit where credit is due; Currently all album information and cover images link to <a href="http://www.discogs.com" target="_blonk">discogs.com</a>, their posse keeps the spirit alive. The service runs on a <a href="http://freebsd.org" target="_blank">FreeBSD</a> machine with <a href="http://nodejs.org/" target="_blank">Node.js</a> and <a href="https://www.npmjs.org/package/restify" target="_blank">Restify</a>.</p>
+    </body>
+</html>
