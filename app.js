@@ -4,8 +4,8 @@ var quotes = require('./model.js').model;
 var ua = require('universal-analytics');
 var visitor = ua('UA-2158627-15');
 
-var og = [];
-var bg = [];
+var og = []; var oga = []; var ogt = [];
+var bg = []; var bga = []; var bgt = [];
 
 var server = restify.createServer( {
 
@@ -134,34 +134,66 @@ function noRequest( req, res, next ) {
 
 function setupNLP() {
 
+    var r, t = new Date().getTime();
+
+    r = setupNLPInner('text');
+    og = r.og; bg = r.bg;
+
+    r = setupNLPInner('track');
+    ogt = r.og; bgt = r.bg;
+
+    r = setupNLPInner('album');
+    oga = r.og; bga = r.bg;
+
+    var numtokens = og.length+bg.length+ogt.length+bgt.length+oga.length+bga.length;
+    console.log("setupNLP took: " + (new Date().getTime() - t) + "ms for " + numtokens + " tokens" );
+}
+
+function setupNLPInner( akey ) {
+
     var corpora = "";
 
     for ( var i = 0 ; i < quotes.length; i++ ) {
 
-        corpora = corpora + quotes[i].text + " ";
+        corpora = corpora + quotes[i][akey] + " ";
 
     }
 
-    corpora = corpora.toLowerCase().replace(/[^\w\s\']/gim, '');
+    corpora = corpora.trim().toLowerCase().replace(/[^\w\s\']/gim, '');
 
-    og = corpora.split(" ");
-    bg = [];
+    var aog = corpora.split(" ");
+    var abg = [];
 
-    for (var i = 0, j = og.length - 1; i < j; i++) {
+    for (var i = 0, j = aog.length - 1; i < j; i++) {
 
-        bg[i] = og[i] + " " + og[i + 1]
+        abg[i] = aog[i] + " " + aog[i + 1]
 
     }
 
-    bg =  bg.length ? bg : og;
+    abg = abg.length ? abg : aog;
+
+    return { bg: abg, og: aog};
 
 }
 
 function buildQuote() {
 
-    var sWord = og[Math.floor(Math.random() * og.length-1) + 1];
-    var sLength = Math.floor(Math.random() * (15 - 9 + 1)) + 9;
-    var sQuote = ""; var sTokens = [];
+    return  {
+                'quote': {
+                            'text': generateString( og, bg, 17, 7 ) + ".",
+                            'track': generateString( og.concat(ogt), bg.concat(bgt), 9, 4 ),
+                            'album': generateString( og.concat(oga), bg.concat(bga), 7, 4 ),
+                            'year': Math.floor(Math.random() * (new Date().getFullYear() - 1994 + 1)) + 1994
+                         }
+            };
+
+}
+
+function generateString( aog, abg, alenmin, alenmax ) {
+
+    var sWord = aog[Math.floor(Math.random() * aog.length-1) + 1];
+    var sLength = Math.floor(Math.random() * (alenmax - alenmin + 1)) + alenmin;
+    var sTokens = [];
 
     var searchWord = sWord;
 
@@ -169,11 +201,13 @@ function buildQuote() {
 
         var tokenList = [];
 
-        for (var j = 0 ; j < bg.length; j++) {
+        for (var j = 0 ; j < abg.length; j++) {
 
-            var token = bg[j].split(" ");
+            var token = abg[j].split(" ");
             if (token[0] == searchWord) {
+
                 tokenList.push(token);
+
             }
 
         }
@@ -182,14 +216,14 @@ function buildQuote() {
         sTokens.push(lToken[0]);
         searchWord = lToken[1];
 
-        if (i == sLength-1 && lToken[0].length < 4) {
+        if (i == sLength - 1 && lToken[0].length < 4) {
+
             sLength++;
+
         }
 
     }
 
-    sQuote = sTokens.join(" ") + ".";
-
-    return { 'quote': { 'text': sQuote } };
+    return sTokens.join(" ");
 
 }

@@ -263,7 +263,7 @@ var model = [
     },
 
     {
-        'text': 'Switch off the lights and close your eyes. Feel the energy inside. Chilli bow, chilli bow, chilli bow.',
+        'text': 'Switch off the lights and close your eyes. Feel the energy inside. Chilli bowl, chilli bowl, chilli bowl.',
         'track': 'Fire',
         'album': 'Age of love',
         'year': '1997',
