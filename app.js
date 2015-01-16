@@ -18,6 +18,14 @@ var server = restify.createServer( {
 server.use( restify.queryParser() );
 server.use( restify.bodyParser() );
 server.use( restify.CORS() );
+server.use(restify.jsonp());
+server.use(restify.gzipResponse());
+server.use(restify.throttle({
+  burst: 50,
+  rate: 30,
+  ip: true
+  }
+));
 
 server.get( {path: '/json'}, noRequest );
 server.get( {path: '/json/random'}, randomQuote );
@@ -31,6 +39,8 @@ server.get(/.*/, restify.serveStatic({
     'default': 'index.html'
 
 }));
+
+server.pre(restify.pre.userAgentConnection());
 
 server.listen( bindPort, bindIp, function() {
 
@@ -53,7 +63,7 @@ function randomQuote( req, res, next ) {
     visitor.pageview("/json/quote/" + index).send();
     visitor.event("Return Quote", "Random Quote").send()
 
-    res.send( 200, getQuote(index) );
+    res.json( 200, getQuote(index) );
     return next();
 
 }
@@ -69,7 +79,7 @@ function dailyQuote( req, res, next ) {
     visitor.pageview("/json/quote/" + index).send();
     visitor.event("Return Quote", "Daily Quote").send()
 
-    res.send( 200, getQuote(index) );
+    res.json( 200, getQuote(index) );
     return next();
 
 }
@@ -93,7 +103,7 @@ function fixedQuote( req, res, next ) {
     visitor.pageview("/json/quote/" + index).send();
     visitor.event("Return Quote", "Fixed Quote").send()
 
-    res.send( 200, getQuote(index) );
+    res.json( 200, getQuote(index) );
     return next();
 
 }
@@ -105,7 +115,7 @@ function generateQuote( req, res, next ) {
     visitor.pageview("/json/quote/generated").send();
     visitor.event("Return Quote", "Generate Quote").send()
 
-    res.send( 200, buildQuote() );
+    res.json( 200, buildQuote() );
     return next();
 
 }
