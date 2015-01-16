@@ -3,6 +3,7 @@ var bindIp = '0.0.0.0', bindPort = '8080';
 var quotes = require('./model.js').model;
 var ua = require('universal-analytics');
 var visitor = ua('UA-2158627-15');
+var testNLP = false;
 
 var og = []; var oga = []; var ogt = [];
 var bg = []; var bga = []; var bgt = [];
@@ -147,6 +148,16 @@ function setupNLP() {
 
     var numtokens = og.length+bg.length+ogt.length+bgt.length+oga.length+bga.length;
     console.log("setupNLP took: " + (new Date().getTime() - t) + "ms for " + numtokens + " tokens" );
+
+    if (testNLP == true) {
+
+        for ( var i = 0; i < 25; i++ ) {
+
+            console.log( generateString( og, bg, 13, 6 ) );
+
+        }
+
+    }
 }
 
 function setupNLPInner( akey ) {
@@ -159,14 +170,19 @@ function setupNLPInner( akey ) {
 
     }
 
-    corpora = corpora.trim().toLowerCase().replace(/[^\w\s\']/gim, '');
+    corpora = corpora.trim().toLowerCase().replace(/[^\w\s\'\.\,]/gim, '');
 
-    var aog = corpora.split(" ");
+    var aog = corpora.split(/[\s\,\.]+/);
     var abg = [];
 
     for (var i = 0, j = aog.length - 1; i < j; i++) {
 
-        abg[i] = aog[i] + " " + aog[i + 1]
+        // allow dot in right, comma in left.
+        if ( abg[i] != "." && abg[i + 1] != "," ) {
+
+            abg[i] = aog[i] + " " + aog[i + 1]
+
+        }
 
     }
 
@@ -180,7 +196,7 @@ function buildQuote() {
 
     return  {
                 'quote': {
-                            'text': generateString( og, bg, 17, 7 ) + ".",
+                            'text': generateString( og, bg, 13, 6 ) + ".",
                             'track': generateString( og.concat(ogt), bg.concat(bgt), 9, 4 ),
                             'album': generateString( og.concat(oga), bg.concat(bga), 7, 4 ),
                             'year': Math.floor(Math.random() * (new Date().getFullYear() - 1994 + 1)) + 1994
@@ -219,6 +235,13 @@ function generateString( aog, abg, alenmin, alenmax ) {
         if (i == sLength - 1 && lToken[0].length < 4) {
 
             sLength++;
+
+        }
+
+        // Quit if we encounter period.
+        if (searchWord == ".") {
+
+            break;
 
         }
 
