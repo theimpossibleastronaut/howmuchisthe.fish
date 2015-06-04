@@ -1,8 +1,10 @@
 var restify = require( 'restify' );
 var bindIp = '0.0.0.0', bindPort = '8080';
 var quotes = require('./model.js').model;
+var crypto = require('crypto');
 var ua = require('universal-analytics');
 var visitor = ua('UA-2158627-15');
+var fs = require('fs');
 var testNLP = false;
 
 var og = []; var oga = []; var ogt = [];
@@ -48,6 +50,7 @@ server.listen( bindPort, bindIp, function() {
     console.log( '#Quotes %s', quotes.length );
     console.log( 'Generating data for generation callback' );
 
+    annotateModel();
     setupNLP();
 
     console.log( 'Ready.' );
@@ -170,6 +173,16 @@ function setupNLP() {
     }
 }
 
+function annotateModel() {
+    for ( var i = 0 ; i < quotes.length; i++ ) {
+        var basename = getBasename(i);
+        if (fs.existsSync("htdocs/data/" + basename + ".json")) {
+            var data = JSON.parse(fs.readFileSync("htdocs/data/" + basename + ".json", "utf8"));
+            for (var attrname in data) { quotes[i][attrname] = data[attrname]; }
+        }
+    }
+}
+
 function setupNLPInner( akey ) {
 
     var corpora = "";
@@ -259,4 +272,8 @@ function generateString( aog, abg, alenmin, alenmax ) {
 
     return sTokens.join(" ");
 
+}
+
+function getBasename( aQuoteIndex ) {
+    return crypto.createHash('sha1').update(quotes[aQuoteIndex].year + "-" + quotes[aQuoteIndex].album).digest('hex');
 }
