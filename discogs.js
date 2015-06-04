@@ -69,7 +69,7 @@ function annotateQuote( aQuoteIndex ) {
                 var datFile = "htdocs/data/" + basename;
                 fs.writeFileSync(datFile + ".dat", JSON.stringify(data));
                 var dataparsed = {
-                    "album_information": "https://discogs.com/" + data.uri,
+                    "album_information": data.uri,
                     "album_cover": data.images[0].resource_url,
                     "album_thumb": data.thumb,
                     "releasedate": data.released
