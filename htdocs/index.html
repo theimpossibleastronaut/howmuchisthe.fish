@@ -134,10 +134,11 @@
             </tr>
         </table>
         <h2>Sample data</h2>
-        <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data.</p>
+        <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data. Track and video data is only returned if found on discogs.</p>
         <pre><code class="language-javascript">{
   "id": "34",
   "permalink": "http:\/\/howmuchisthe.fish\/json\/perma\/34",
+  "hash": "0160d2b85e18175df0877a31638831a75bc666b4",
   "quote": {
     "text": "Before success can manifest. You've got to go through the learning process.",
     "track": "The learning process",
@@ -146,7 +147,16 @@
     "album_information": "https:\/\/www.discogs.com\/Scooter-Fuck-The-Millennium\/release\/262481",
     "album_cover": "https:\/\/api-img.discogs.com\/WdO3KH0r2sBHbvR75Dv6u2RwzSk=\/fit-in\/600x590\/filters:strip_icc():format(jpeg):mode_rgb():quality(96)\/discogs-images\/R-262481-1276693542.jpeg.jpg",
     "album_thumb": "https:\/\/api-img.discogs.com\/5gKKBkZNazjTHIeFGHHi_sGYy4A=\/fit-in\/150x150\/filters:strip_icc():format(jpeg):mode_rgb()\/discogs-images\/R-262481-1276693542.jpeg.jpg",
-    "releasedate": "1999"
+    "releasedate": "1999",
+    "track_cover": "https:\/\/api-img.discogs.com\/AD--SmD2VvUapPnsiK61XWiNWFQ=\/fit-in\/600x600\/filters:strip_icc():format(jpeg):mode_rgb():quality(96)\/discogs-images\/R-4728744-1373622513-9493.jpeg.jpg",
+    "track_thumb": "https:\/\/api-img.discogs.com\/UXxX33ylr8YRvB41zTJvsJEnoDw=\/fit-in\/150x150\/filters:strip_icc():format(jpeg):mode_rgb()\/discogs-images\/R-4728744-1373622513-9493.jpeg.jpg",
+    "track_master": "https:\/\/www.discogs.com\/Scooter-Back-To-The-Heavyweight-Jam\/release\/4728744",
+    "videos": [
+      {
+        "title": "Scooter - Faster Harder Scooter (Official Video HQ)",
+        "link": "http:\/\/www.youtube.com\/watch?v=j0LD2GnxmKU"
+      }
+    ]
   }
 }</code></pre>
         <h2>Implementations</h2>

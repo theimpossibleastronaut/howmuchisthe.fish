@@ -4,6 +4,7 @@ Lyrical madness from the brains of H.P. Baxxter in the form of a JSON API.
 ```
 npm install restify universal-analytics disconnect
 echo "mydiscogs auth token" > .gstoken
+node discogs.js
 node app.js
 ```
 

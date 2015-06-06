@@ -129,6 +129,7 @@ function getQuote( index ) {
     var output = {
         'id': index,
         'permalink': 'http://howmuchisthe.fish/json/perma/' + index,
+        'hash': getBasename(index),
         'quote': quotes[index]
     };
 
@@ -275,5 +276,5 @@ function generateString( aog, abg, alenmin, alenmax ) {
 }
 
 function getBasename( aQuoteIndex ) {
-    return crypto.createHash('sha1').update(quotes[aQuoteIndex].year + "-" + quotes[aQuoteIndex].album).digest('hex');
+    return crypto.createHash('sha1').update(quotes[aQuoteIndex].year + "-" + quotes[aQuoteIndex].album + "-" + quotes[aQuoteIndex].track).digest('hex');
 }
