@@ -32,6 +32,7 @@ server.use(restify.throttle({
 server.get( {path: '/json'}, noRequest );
 server.get( {path: '/json/random'}, randomQuote );
 server.get( {path: '/json/random/generate'}, generateQuote );
+server.get( {path: '/json/random/video'}, randomVideo );
 server.get( {path: '/json/daily'}, dailyQuote );
 server.get( {path: '/json/perma/:quoteId'}, fixedQuote );
 
@@ -67,6 +68,36 @@ function randomQuote( req, res, next ) {
     visitor.event("Return Quote", "Random Quote").send()
 
     res.json( 200, getQuote(index) );
+    return next();
+
+}
+
+function randomVideo( req, res, next ) {
+
+    res.setHeader('Access-Control-Allow-Origin','*');
+
+    var theObject = {
+        "quote": {
+            "videos": []
+        }
+    };
+
+    var index;
+    var theQuote;
+
+    while(theObject.quote.videos.length < 1) {
+        index = Math.floor(Math.random() * (quotes.length)) ;
+        theQuote = getQuote(index);
+
+        if (theQuote.quote.videos && theQuote.quote.videos.length > 0) {
+            theObject.quote.videos.push(theQuote.quote.videos[0]);
+        }
+    }
+
+    visitor.pageview("/json/random/video/" + index).send();
+    visitor.event("Return Video", "Random Video").send()
+
+    res.json( 200, theObject );
     return next();
 
 }
