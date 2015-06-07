@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How much is the fish?</title>
+        <meta charset="utf-8">
+
+        <style>
+            html,body{
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                margin: 0px!important;
+                padding: 0px;
+                background-color: #000000;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.getJSON("http://howmuchisthe.fish/json/random/video", function(data) {
+                    window.document.title = data.quote.videos[0].title;
+                    var video = data.quote.videos[0].link.split("v=");
+                    // for now only do youtube
+                    if (video.length > 1 && data.quote.videos[0].link.indexOf("youtube") > -1) {
+                        video = video[1];
+                        if (video.indexOf("&") > -1) {
+                            video = video.substr(0, video.indexOf("&"));
+                        }
+
+                        if (video.length > 6) {
+                            $('body').append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + video + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+<body>
+</body>
+</html>
