@@ -90,7 +90,7 @@ function randomVideo( req, res, next ) {
         theQuote = getQuote(index);
 
         if (theQuote.quote.videos && theQuote.quote.videos.length > 0) {
-            theObject.quote.videos.push(theQuote.quote.videos[Math.floor(Math.random() * (heQuote.quote.videos.length))]);
+            theObject.quote.videos.push(theQuote.quote.videos[Math.floor(Math.random() * (theQuote.quote.videos.length))]);
         }
     }
 
