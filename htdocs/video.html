@@ -22,7 +22,36 @@
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>
-            $(document).ready(function() {
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                  height: '100%',
+                  width: '100%',
+                  events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                  }
+                });
+            }
+
+            function onPlayerReady(event) {
+                playNewVideo();
+                event.target.playVideo();
+            }
+
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.ENDED) {
+                  playNewVideo();
+                }
+            }
+
+            function playNewVideo() {
                 $.getJSON("http://howmuchisthe.fish/json/random/video", function(data) {
                     window.document.title = data.quote.videos[0].title;
                     var video = data.quote.videos[0].link.split("v=");
@@ -34,13 +63,14 @@
                         }
 
                         if (video.length > 6) {
-                            $('body').append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + video + '?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+                            player.loadVideoById(video);
                         }
                     }
                 });
-            });
+            }
         </script>
     </head>
 <body>
+<div id="player"></div>
 </body>
 </html>
