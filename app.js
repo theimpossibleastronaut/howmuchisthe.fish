@@ -20,13 +20,14 @@ var server = restify.createServer( {
 server.use( restify.queryParser() );
 server.use( restify.bodyParser() );
 server.use( restify.CORS() );
-server.use(restify.jsonp());
-server.use(restify.gzipResponse());
-server.use(restify.throttle({
-  burst: 50,
-  rate: 30,
-  ip: true
-  }
+server.use( restify.jsonp());
+server.use( restify.gzipResponse());
+server.use( restify.throttle(
+    {
+        burst: 50,
+        rate: 30,
+        ip: true
+    }
 ));
 
 server.get( {path: '/json'}, noRequest );

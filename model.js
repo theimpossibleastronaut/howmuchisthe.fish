@@ -867,8 +867,219 @@ var model = [
         'track': 'The avenger\'s back',
         'album': 'Mind the gap',
         'year': '2004'
+    },
+
+    {
+        'text': 'Now let me know if you\'re good to go',
+        'track': 'Hello! (Good to be back)',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Hello! Hello! Good to be back, good to be back',
+        'track': 'Hello! (Good to be back)',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Don\'t stop it\'s the ride of your life. Hold on tight, the whole night, \'cause you got the right',
+        'track': 'Hello! (Good to be back)',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Like shotgun on the M.I.C. I float like a butterfly, sting like a bee',
+        'track': 'Hello! (Good to be back)',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'The explosion off my tongue makes you shiver',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'You faggot lost your flavour like an old piece of gum yeah',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Rambling wack shit try to show you\'re the baddest while I sit back and relax go in full flow with attacks.',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Giant steps are what you take. Walking on the moon, I hope my legs don\'t break',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Leave you there with stitches, jacking to the pictures of your sister, \'til your hands got blisters',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I don\'t speak my rhymes. I speak my mind. I battle with closed eyes and start beefing blind.',
+        'track': 'Privileged to witness',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I flick the switch 2000 Volts of lyrical tricks yeah',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Discharge hard like lightning quick and hear the tick you got it?',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'But before you hear the tock. There\'s a new flex I drop from my frontal lobe \'til the microphone explodes',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Love to rock bottom beats for the flicks to hibernate and syncopate but I\'m still in the mix',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I pump kinetics unintentional malice. Wanna battle one of us is ending up in God\'s palace',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Back off deadly like black coffee. Long as I got lungs and a knot you can\'t stop me',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Rotterdam. Amsterdam. Hey Dimitri. Yooo!',
+        'track': 'Rock bottom',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'It\'s H the lyrical weapon',
+        'track': 'The leading horse',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Let\'s get steppin, your girls\' panties, I will be wetting. Last night\'s events she won\'t be forgetting',
+        'track': 'The leading horse',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I bring quick brawls, fast trouble for every line you buss, I blast double',
+        'track': 'The leading horse',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Alright, that\'s what happens if you give it. Got a life, gotta live it',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'People call me ice, ain\'t another also - ran. I\'m the dan, with a tan, I got the master plan. Ahead of the game like in Japan.',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Ain\'t no saint, I cannot dispute everyone will meet their moment of truth',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I pierce your soul like a five-point picket',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Lyrical badness and madness still wicked. All those girls who love ice, just lick it.',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'The Horseman says: You can\'t please anyone. So please yourself!',
+        'track': 'See me, Feel me',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Listen to the riddim, gonna rock you to the bone. Once again it\'s M.C. H. on the microphone',
+        'track': 'Seven bridges',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Listen to the jam, I got the mic in my hand with a wicked slang, I gotta make a grand.',
+        'track': 'Seven bridges',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'Ice cream shaker, you\'re the waitress. I\'m the waiter got my way, got my way, sooner or later',
+        'track': 'Seven bridges',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
+    },
+
+    {
+        'text': 'I\'m your man, with a different plan, yeah',
+        'track': 'Seven bridges',
+        'album': 'Who\'s got the last laugh now',
+        'year': '2005'
     }
 
 ];
+
 
 module.exports.model = model;
