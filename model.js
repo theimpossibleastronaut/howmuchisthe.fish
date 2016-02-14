@@ -1077,7 +1077,106 @@ var model = [
         'track': 'Seven bridges',
         'album': 'Who\'s got the last laugh now',
         'year': '2005'
+    },
+
+    {
+        'text': 'I cause a riot on the stage like a lion in a cage',
+        'track': 'Behind the cow',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Zibbidi zibbidi doo-dah zibbidi doo-dah hey',
+        'track': 'Behind the cow',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'I say with no delay, MC H on the play',
+        'track': 'Behind the cow',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'I am a fighter and not a writer',
+        'track': 'Does the fish have chips',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Alright now shake your hips, one question, Does the fish have chips?',
+        'track': 'Does the fish have chips',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'I\'m in love with myself, cause it\'s good for my health. I drive a Rolls Royce, cause it\'s good for my voice.',
+        'track': 'Does the fish have chips',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'How do I get off this bus?',
+        'track': 'Does the fish have chips',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Like vanilla in disguise, my name is ice',
+        'track': 'The united vibe',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'From the top to the ground back on the floor we need the hardcore',
+        'track': 'The united vibe',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Alright, this one\'s going out to our posse. To all da junglist boys and girls in the place, yes!',
+        'track': 'Ratty\'s revenge',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'You told me you were heavyweight You\'re just as light as a feather!',
+        'track': 'Imaginary battle',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Your last release was anything but a seller. And your microphone fears the word accapella!',
+        'track': 'Imaginary battle',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Used to be an oldschool skater. The chicks terminator. Now four years later, the new style gladiator',
+        'track': 'Scarborough affair',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
+    },
+
+    {
+        'text': 'Mad props going out the mad crew junglists',
+        'track': 'Scarborough affair',
+        'album': 'The Ultimate Aural Orgasm',
+        'year': '2007'
     }
+
 
 ];
 
