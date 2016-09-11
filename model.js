@@ -296,7 +296,7 @@ var model = [
     },
 
     {
-        'text': 'Jetz kommt die feuerwehr.',
+        'text': 'Jetzt kommt die Feuerwehr.',
         'track': 'I\'m your pusher',
         'album': 'Sheffield',
         'year': '2000'
