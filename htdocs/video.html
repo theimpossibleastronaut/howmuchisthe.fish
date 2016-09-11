@@ -52,7 +52,7 @@
             }
 
             function playNewVideo() {
-                $.getJSON("http://howmuchisthe.fish/json/random/video", function(data) {
+                $.getJSON("https://howmuchisthe.fish/json/random/video", function(data) {
                     window.document.title = data.quote.videos[0].title;
                     var video = data.quote.videos[0].link.split("v=");
                     // for now only do youtube
