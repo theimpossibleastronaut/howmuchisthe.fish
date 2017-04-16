@@ -1,0 +1,50 @@
+html,body
+{
+    background-color: #fff;
+    min-width: 590px;
+    width: 100%;
+}
+
+.min-width-160 {
+    min-width: 160px;
+}
+
+.clear {
+    clear: both;
+}
+
+.padding-bottom {
+    padding-bottom: 1.5em;
+}
+
+table {
+    box-shadow: none;
+}
+
+table.endpoints {
+    margin: 8px;
+}
+
+table.horizontal {
+    border: 0;
+    margin: 8px;
+    margin-left: 0px;
+    margin-right: 16px;
+}
+
+tbody {
+    overflow: visible !important;
+}
+
+code {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.loader div {
+    margin: 0 auto;
+}
+
+.loadable {
+    display: none;
+}

@@ -3,61 +3,14 @@
     <head>
         <title>How much is the fish?</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <style>
-            blockquote {
 
-                box-shadow: 0 0 6px rgba(0,0,0,0.5);
-                margin: 0 0 1.5em 0;
-                padding: .75em .5em .75em 1em;
-                background: #fff;
-                font-size: 1em;
-                line-height: 1.5;
-                border: 0;
-                outline: 0;
-                font: inherit;
-                vertical-align: baseline;
-
-                background-repeat: no-repeat;
-                background-position: top left;
-                background-size: 228px;
-                min-height: 200px;
-                min-width: 600px;
-
-            }
-
-            blockquote footer {
-
-                margin: 1em 0 0 228px;
-                font-size: 1em;
-                line-height: 1.5;
-                font: inherit;
-                font-style: italic;
-
-            }
-
-            blockquote p {
-
-                margin: 0 0 0 228px;
-                font-size: 1.5em;
-
-            }
-
-            #logo {
-                clear: none;
-                float: left;
-                padding: 0 24px 24px 0;
-            }
-
-            .clear {
-                clear: both;
-            }
-
-            .wrapper {
-                padding: 120px;
-            }
-        </style>
+        <link href="mini-default.min.css" rel="stylesheet" />
         <link href="prism.css" rel="stylesheet" />
+
+        <link href="fish.css" rel="stylesheet" />
+
     </head>
     <body onload="bodyLoad()">
         <script src="prism.js"></script>
@@ -91,10 +44,15 @@
 
                         var jsonObject = JSON.parse( xhttp.responseText );
 
-                        document.querySelector( "#daily-quote-bc" ).style.backgroundImage = "url('" + jsonObject.quote.album_thumb + "')";
+                        document.querySelector( "#daily-quote-bc" ).src = jsonObject.quote.album_cover;
                         document.querySelector( "#daily-quote" ).innerHTML = jsonObject.quote.text;
                         document.querySelector( "#track" ).innerHTML = jsonObject.quote.track;
                         document.querySelector( "#album" ).innerHTML = jsonObject.quote.album + " (" + jsonObject.quote.year + ")";
+                        document.querySelector( "#information a" ).href = jsonObject.quote.album_information;
+
+                        document.querySelector(".loader").remove();
+                        document.querySelector(".loadable").style.display = 'flex';
+
 
                     }
 
@@ -109,57 +67,109 @@
           }
 
         </script>
-        <a href="https://github.com/theimpossibleastronaut/howmuchisthe.fish"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-        <img id="logo" src="horrible-logo.jpg" alt="How much is the fish" />
-        <div class="wrapper">
-            <h1>The one and only Scooter Quote API</h1>
-            <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
+        <a name="top" href="https://github.com/theimpossibleastronaut/howmuchisthe.fish"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        <div class="row">
+            <div class="col-sm-1 min-width-160">
+                <img id="logo" src="horrible-logo.jpg" alt="How much is the fish" />
+            </div>
+            <div class="col-sm-8">
+                <h1>The one and only Scooter Quote API</h1>
+                <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="clear"></div>
+        <header>
+            <a href="#top" class="button">#</a>
+            <a href="#api" class="button">API</a>
+            <a href="#usage" class="button">Usage</a>
+            <a href="#data" class="button">Data</a>
+            <a href="#users" class="button">Users</a>
+            <a href="#greetz" class="button">Greetz</a>
+            <a href="#respect" class="button">Respect</a>
+        </header>
+        <div class="clear padding-bottom"></div>
+
+        <div class="row loader">
+            <div class="spinner-donut large"></div>
         </div>
 
-        <div class="clear"></div>
-
-        <blockquote id="daily-quote-bc" cite="/json/daily">
-            <p id="daily-quote"></p>
-            <footer>&mdash; <cite>H.P. Baxxter<br>Track: <span id="track"></span><br />Album: <span id="album"></span></cite></footer>
-        </blockquote>
-
-        <h2>JSON API Endpoints:</h2>
-        <p>Posse!, don't use a trailing /, you have been warned.</p>
-        <table>
-            <tr>
-                <th>Endpoint</th>
-                <th>Description</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>/json/random</td>
-                <td>Fetch a random quote</td>
-                <td>Implemented</td>
-            </tr>
-            <tr>
-                <td>/json/random/generate</td>
-                <td>Create a random quote based on the database</td>
-                <td>Implemented, needs work</td>
-            </tr>
-            <tr>
-                <td>/json/random/video</td>
-                <td>Return a random video (only returns videos[0])</td>
-                <td>Implemented</td>
-            </tr>
-            <tr>
-                <td>/json/daily</td>
-                <td>Fetch the quote of the day</td>
-                <td>Implemented</td>
-            </tr>
-            <tr>
-                <td>/json/perma/&lt;quoteid&gt;</td>
-                <td>Deeplink to your favorite quote</td>
-                <td>Implemented</td>
-            </tr>
-        </table>
-        <h2>Sample data</h2>
-        <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data. Track and video data is only returned if found on discogs.</p>
-        <pre><code class="language-javascript">{
+        <div class="row loadable">
+            <div class="col-sm-3 min-width-160">
+                <img src="" id="daily-quote-bc" />
+            </div>
+            <div class="col-sm-7">
+                <h2 id="daily-quote"></h2>
+                <table class="horizontal">
+                    <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Album</th>
+                            <th>Information</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td id="track" data-label="Track"></td>
+                        <td id="album" data-label="Album"></td>
+                        <td id="information" data-label="Information"><a href="">Discogs.com</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <a name="api"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>API<small>JSON Endpoints</small></h2>
+            <p>Posse!, don't use a trailing /, you have been warned.</p>
+            <table class="endpoints preset">
+                <thead>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>/json/random</td>
+                    <td>Fetch a random quote</td>
+                    <td>Implemented</td>
+                </tr>
+                <tr>
+                    <td>/json/random/generate</td>
+                    <td>Create a random quote based on the database</td>
+                    <td>Implemented, needs work</td>
+                </tr>
+                <tr>
+                    <td>/json/random/video</td>
+                    <td>Return a random video (only returns videos[0])</td>
+                    <td>Implemented</td>
+                </tr>
+                <tr>
+                    <td>/json/daily</td>
+                    <td>Fetch the quote of the day</td>
+                    <td>Implemented</td>
+                </tr>
+                <tr>
+                    <td>/json/perma/&lt;quoteid&gt;</td>
+                    <td>Deeplink to your favorite quote</td>
+                    <td>Implemented</td>
+                </tr>
+            </table>
+        </section>
+        <a name="usage"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>Usage<small>Rough radical</small></h2>
+            <p>
+                <script type="text/javascript" src="https://asciinema.org/a/ckvtga16szfz93j84pjj2f0sp.js" id="asciicast-ckvtga16szfz93j84pjj2f0sp" async></script>
+            </p>
+        </section>
+        <a name="data"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>Data<small>The actual JSON in all it's glory</small></h2>
+            <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data. Track and video data is only returned if found on discogs.</p>
+            <pre><code class="language-javascript">{
   "id": "34",
   "permalink": "http:\/\/howmuchisthe.fish\/json\/perma\/34",
   "hash": "0160d2b85e18175df0877a31638831a75bc666b4",
@@ -183,23 +193,62 @@
     ]
   }
 }</code></pre>
-        <h2>Implementations</h2>
-        <p>Have a public implementation? Great! Tweet <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> and get it listed here.</p>
-        <p><b>Deelstar</b> <a href='http://deelstar.nl' target='_blank'>http://deelstar.nl</a> - First implementation, and with a marquee no less.<br>
-        <b>@scooterquote</b> <a href='https://twitter.com/scooterquote' target='_blank'>on twitter</a> - From the same guy that brought you <a href='http://bierfoto.nl' target='_blank'>bierfoto.nl</a>.<br>
-        <b>how_much_is_the_fish rubygem</b> <a href="http://rubygems.org/gems/how_much_is_the_fish" target="_blank">on rubygems</a>, <a href="https://github.com/ivdma/howmuchisthe.fish" target="_blank">on github</a> - a wrapper in ruby by <a href="https://twitter.com/ivdma" target="_blank">@ivdma</a>.<br>
-        <b>Piping into whatever</b> <a href="https://gist.github.com/sexybiggetje/3185938503299641d233" target="_blank">on github</a> - a gist explaining how to pipe the json with jq and curl into your favorite shell.<br>
-        <b>Scooter Quotes</b> <a href="https://play.google.com/store/apps/details?id=com.ionicframework.scooter445322" target="_blank">on google play</a> <a href="https://github.com/losbeekos/scooter-quotes" target="_blank">on github</a> - great native app by <a href="http://www.losbeekos.nl" target="_blank">losbeekos</a> implementing most of the API.<br>
-        <b>Scooter TV</b> <a href="http://tv.howmuchisthe.fish" target="_blank">tv.howmuchisthe.fish</a> - Randomly play a scooter video
-        </p>
-        <h2>Shop scooter stuff</h2>
-        <p>
-            <a href="https://winkel.bol.com/winkel/howmuchisthe_fish" target="_blank">Dutch BOL.com store - Howmuchisthe.fish</a><br>
-            <a href="http://scooter.bravado.de/" target="_blank">Official Scooter licensed merchandise</a>
-        </p>
-        <h2>Greetz</h2>
-        <p>In great Scooter fashion: We want to sing a big shout to <a href="http://www.bierfoto.nl" target="_blank">bierfoto</a>, and to all ravers in the world! And to H.P. Baxxter, Phil Speiser, Michael Simon, Ferris Bueller, Rick Jordan, Frank Visser, Fatman Scoop, The Bloodhound Gang, Status Quo, Jens Thele and to Winkelcentrum Woensel.</p>
-        <h2>Maximum respect</h2>
-        <p>Credit where credit is due; Currently all album information and cover images link to <a href="http://www.discogs.com" target="_blonk">discogs.com</a>, their posse keeps the spirit alive. The service runs on a <a href="http://freebsd.org" target="_blank">FreeBSD</a> machine with <a href="http://nodejs.org/" target="_blank">Node.js</a> and <a href="https://www.npmjs.org/package/restify" target="_blank">Restify</a>.</p>
+        </section>
+        <a name="users"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>Users<small>Implementations and libraries</small></h2>
+            <p>Have a public implementation? Great! Tweet <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> and get it listed here.</p>
+
+            <table class="horizontal preset">
+                <thead>
+                    <tr>
+                        <th>Deelstar</th>
+                        <th>@scooterquote</th>
+                        <th>Rubygem</th>
+                        <th>Piping into shell</th>
+                        <th>Scooter Qoutes app</th>
+                        <th>Scooter TV</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>First implementation, and with a marquee no less</td>
+                    <td>From the same guy that brought you <a href='http://bierfoto.nl' target='_blank'>bierfoto.nl</a></td>
+                    <td>A wrapper in ruby by <a href="https://twitter.com/ivdma" target="_blank">@ivdma</a></td>
+                    <td>A gist explaining how to pipe the json with jq and curl into your favorite shell</td>
+                    <td>Great native app by <a href="http://www.losbeekos.nl" target="_blank">losbeekos</a> implementing most of the API</td>
+                    <td>Randomly play a scooter video</td>
+                </tr>
+                <tr>
+                    <td><a href='http://deelstar.nl' target='_blank'>deelstar</a></td>
+                    <td><a href='https://twitter.com/scooterquote' target='_blank'>twitter</a></td>
+                    <td><a href="http://rubygems.org/gems/how_much_is_the_fish" target="_blank">rubygems</a>, <a href="https://github.com/ivdma/howmuchisthe.fish" target="_blank">github</a></td>
+                    <td><a href="https://gist.github.com/sexybiggetje/3185938503299641d233" target="_blank">github</a></td>
+                    <td><a href="https://github.com/losbeekos/scooter-quotes" target="_blank">github</a></td>
+                    <td><a href="https://tv.howmuchisthe.fish" target="_blank">tv.howmuchisthe.fish</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <a name="greetz"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>Greetz<small>to the junglist soldiers</small></h2>
+            <p>In great Scooter fashion: We want to sing a big shout to <a href="http://www.bierfoto.nl" target="_blank">bierfoto</a>, and to all ravers in the world! And to H.P. Baxxter, Phil Speiser, Michael Simon, Ferris Bueller, Rick Jordan, Frank Visser, Fatman Scoop, The Bloodhound Gang, Status Quo, Jens Thele and to Winkelcentrum Woensel.</p>
+        </section>
+
+        <a name="Respect"></a>
+        <div class="clear padding-bottom"></div>
+        <section>
+            <h2>Maximum respect<small>not only to the man in the icecream van</small></h2>
+            <p>Credit where credit is due; Currently all album information and cover images link to <a href="http://www.discogs.com" target="_blonk">discogs.com</a>, their posse keeps the spirit alive. The service runs on a <a href="https://debian.org" target="_blank">Debian</a> machine with <a href="http://nodejs.org/" target="_blank">Node.js</a> and <a href="https://www.npmjs.org/package/restify" target="_blank">Restify</a>.</p>
+        </section>
+
+        <div class="clear padding-bottom"></div>
+        <footer>
+            Code by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> on <a href="https://github.com/theimpossibleastronaut/howmuchisthe.fish" target="_blank">github</a>
+             | <a href="https://winkel.bol.com/winkel/howmuchisthe_fish" target="_blank">Dutch BOL.com store</a>
+             | <a href="http://scooter.bravado.de/" target="_blank">Official Scooter licensed merchandise</a>
+        </footer>
     </body>
 </html>
