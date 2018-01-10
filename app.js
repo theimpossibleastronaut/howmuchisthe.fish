@@ -17,18 +17,18 @@ var server = restify.createServer( {
 
 } );
 
-server.use( restify.queryParser() );
-server.use( restify.bodyParser() );
-server.use( restify.CORS() );
-server.use( restify.jsonp());
-server.use( restify.gzipResponse());
-server.use( restify.throttle(
+server.use( restify.plugins.queryParser() );
+server.use( restify.plugins.bodyParser() );
+//server.use( restify.CORS() );
+//server.use( restify.jsonp());
+//server.use( restify.gzipResponse());
+/*server.use( restify.throttle(
     {
         burst: 50,
         rate: 30,
         ip: true
     }
-));
+));*/
 
 server.get( {path: '/json'}, noRequest );
 server.get( {path: '/json/random'}, randomQuote );
@@ -37,7 +37,7 @@ server.get( {path: '/json/random/video'}, randomVideo );
 server.get( {path: '/json/daily'}, dailyQuote );
 server.get( {path: '/json/perma/:quoteId'}, fixedQuote );
 
-server.get(/.*/, restify.serveStatic({
+server.get(/.*/, restify.plugins.serveStatic({
 
     'directory': 'htdocs',
     'default': 'index.html'

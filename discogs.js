@@ -83,7 +83,7 @@ function annotateQuote( aQuoteIndex ) {
                 console.log(err);
             } else {
                 if (typeof(data.results) != "undefined" && data.results.length > 0 ){
-                    db.release(data.results[0].id, function(err,data) {
+                    db.getRelease(data.results[0].id, function(err,data) {
                         dataset.album = data;
                         isAnnotationComplete();
                     });
@@ -111,7 +111,7 @@ function annotateQuote( aQuoteIndex ) {
                 console.log(err);
             } else {
                 if (typeof(data.results) != "undefined" && data.results.length > 0 ){
-                    db.release(data.results[0].id, function(err,data) {
+                    db.getRelease(data.results[0].id, function(err,data) {
                         dataset.track = data;
                         isAnnotationComplete();
                     });
