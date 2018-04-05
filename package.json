@@ -1,0 +1,26 @@
+{
+  "name": "howmuchisthe.fish",
+  "version": "1.0.0",
+  "description": "Lyrical madness from the brains of H.P. Baxxter in the form of a JSON API.",
+  "main": "app.js",
+  "dependencies": {
+    "disconnect": "^1.2.1",
+    "restify": "^7.1.0",
+    "rita": "^1.3.11",
+    "universal-analytics": "^0.4.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theimpossibleastronaut/howmuchisthe.fish.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theimpossibleastronaut/howmuchisthe.fish/issues"
+  },
+  "homepage": "https://github.com/theimpossibleastronaut/howmuchisthe.fish#readme"
+}
