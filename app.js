@@ -298,15 +298,22 @@ function buildQuote() {
 }
 
 function generateString( aKey ) {
+    var minLength = 7;
+    var maxLength = 12;
+
     if ( aKey === 'track' ) {
-        var length = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
-        return rms[aKey].generateTokens( length ).join(" ");
+        minLength = 2;
+        maxLength = 6;
     } else if ( aKey == 'album' ) {
-        var length = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
-        return rms[aKey].generateTokens( length ).join(" ");
+        minLength = 3;
+        maxLength = 7;
     }
 
-    return rms[aKey].generateSentence();
+    var length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+    var tokenList = rms[aKey].generateTokens( length ).filter(word => word.length > 1).join(' ').toLowerCase();
+    tokenList = tokenList.charAt(0).toUpperCase() + tokenList.slice(1);
+
+    return tokenList;
 }
 
 /*function buildQuote() {
