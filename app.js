@@ -5,15 +5,17 @@ var crypto = require('crypto');
 var ua = require('universal-analytics');
 var visitor = ua('UA-2158627-15');
 var fs = require('fs');
+var rita = require('rita');
 var testNLP = false;
 
-var og = []; var oga = []; var ogt = [];
-var bg = []; var bga = []; var bgt = [];
+/*var og = []; var oga = []; var ogt = [];
+var bg = []; var bga = []; var bgt = [];*/
 
 var server = restify.createServer( {
 
     name: 'howmuchisthe.fish',
-    handleUpgrades: true
+    handleUpgrades: true,
+    version: '1.0.0'
 
 } );
 
@@ -37,11 +39,9 @@ server.get( {path: '/json/random/video'}, randomVideo );
 server.get( {path: '/json/daily'}, dailyQuote );
 server.get( {path: '/json/perma/:quoteId'}, fixedQuote );
 
-server.get(/.*/, restify.plugins.serveStatic({
-
-    'directory': 'htdocs',
-    'default': 'index.html'
-
+server.get( {path: '/*'}, restify.plugins.serveStatic({
+    directory: './htdocs',
+    default: '/index.html'
 }));
 
 server.pre(restify.pre.userAgentConnection());
@@ -179,7 +179,7 @@ function noRequest( req, res, next ) {
 
 }
 
-function setupNLP() {
+/*function setupNLP() {
 
     var r, t = new Date().getTime();
 
@@ -204,7 +204,7 @@ function setupNLP() {
         }
 
     }
-}
+}*/
 
 function annotateModel() {
     for ( var i = 0 ; i < quotes.length; i++ ) {
@@ -216,7 +216,7 @@ function annotateModel() {
     }
 }
 
-function setupNLPInner( akey ) {
+/*function setupNLPInner( akey ) {
 
     var corpora = "";
 
@@ -246,9 +246,70 @@ function setupNLPInner( akey ) {
 
     return { bg: abg, og: aog};
 
+}*/
+
+var rms;
+
+function setupNLP() {
+    rms = {
+        'text': new rita.RiMarkov(4),
+        'track': new rita.RiMarkov(3),
+        'album': new rita.RiMarkov(3)
+    };
+
+    for ( var i = 0 ; i < quotes.length; i++ ) {
+        rms.text.loadText( quotes[i]['text'] );
+
+        var filtered = quotes[i]['text'].replace(/[^A-Za-z\-0-9\s]/g,'');
+
+        rms.track.loadText( filtered );
+        rms.album.loadText( filtered );
+
+        filtered = quotes[i]['track'].replace(/[^A-Za-z\-0-9\s]/g,'');
+        rms.track.loadText( filtered );
+
+        filtered = quotes[i]['album'].replace(/[^A-Za-z\-0-9\s]/g,'');
+        rms.album.loadText( filtered );
+    }
+
+    if (testNLP == true) {
+
+        for ( var i = 0; i < 25; i++ ) {
+
+            console.log( generateString( 'text' ) );
+
+        }
+
+    }
+
 }
 
 function buildQuote() {
+
+    return  {
+                'quote': {
+                            'text': generateString( 'text' ),
+                            'track': generateString( 'track' ),
+                            'album': generateString( 'album' ),
+                            'year': Math.floor(Math.random() * (new Date().getFullYear() - 1994 + 1)) + 1994
+                         }
+            };
+
+}
+
+function generateString( aKey ) {
+    if ( aKey === 'track' ) {
+        var length = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
+        return rms[aKey].generateTokens( length ).join(" ");
+    } else if ( aKey == 'album' ) {
+        var length = Math.floor(Math.random() * (7 - 3 + 1)) + 3;
+        return rms[aKey].generateTokens( length ).join(" ");
+    }
+
+    return rms[aKey].generateSentence();
+}
+
+/*function buildQuote() {
 
     return  {
                 'quote': {
@@ -305,7 +366,7 @@ function generateString( aog, abg, alenmin, alenmax ) {
 
     return sTokens.join(" ");
 
-}
+}*/
 
 function getBasename( aQuoteIndex ) {
     return crypto.createHash('sha1').update(quotes[aQuoteIndex].year + "-" + quotes[aQuoteIndex].album + "-" + quotes[aQuoteIndex].track).digest('hex');
