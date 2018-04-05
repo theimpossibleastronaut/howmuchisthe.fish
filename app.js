@@ -252,7 +252,7 @@ var rms;
 
 function setupNLP() {
     rms = {
-        'text': new rita.RiMarkov(4),
+        'text': new rita.RiMarkov(3),
         'track': new rita.RiMarkov(3),
         'album': new rita.RiMarkov(3)
     };
