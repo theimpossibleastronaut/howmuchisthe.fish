@@ -5,9 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "disconnect": "^1.2.1",
-    "restify": "^7.1.0",
-    "rita": "^1.3.11",
-    "universal-analytics": "^0.4.16"
+    "restify": "^7.4.0",
+    "rita": "^1.3.86",
+    "universal-analytics": "^0.4.20"
   },
   "devDependencies": {},
   "scripts": {
