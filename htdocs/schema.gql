@@ -1,0 +1,35 @@
+scalar Date
+
+type Query {
+  random: Quote!
+  video: Video!
+  daily: Quote!
+  quote(id: ID!): Quote!
+}
+
+type Quote {
+  id: ID!
+  permalink: String!
+  hash: String!
+  text: String!
+  track: String!
+  album: String!
+  year: Int!
+  album_information: String!
+  album_cover: String!
+  album_thumb: String!
+  releasedate: Date!
+
+  # Track data is optional
+  track_cover: String
+  track_thumb: String
+  track_master: String
+
+  # Not all data has videos avaialable
+  videos: [Video]
+}
+
+type Video {
+  title: String!,
+  link: String!
+}
