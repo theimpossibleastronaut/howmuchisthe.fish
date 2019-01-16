@@ -96,6 +96,7 @@ server.get( {path: '/json/perma/:quoteId'}, fixedQuote );
 
 server.get( {path: '/graphql'}, noGql );
 server.post( {path: '/graphql'}, parseGql );
+server.opts( {path: '/graphql'}, optsGql );
 
 server.get( {path: '/*'}, restify.plugins.serveStatic({
     directory: './htdocs',
@@ -244,6 +245,16 @@ function noRequest( req, res, next ) {
     res.send( 404, error );
     return next();
 
+}
+
+function optsGql ( req, res, next ) {
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Headers','Content-Type');
+
+    var error = { 'ok': 'ok' };
+
+    res.send( 200, error );
+    return next();
 }
 
 function noGql ( req, res, next ) {
