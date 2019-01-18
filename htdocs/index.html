@@ -74,7 +74,7 @@
             </div>
             <div class="col-sm-8">
                 <h1>The one and only Scooter Quote API</h1>
-                <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
+                <p>Everyone loves APIs. Everyone loves Scooter. This is a project created for fun by <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a>/<a href="https://mastodon.social/@sexybiggetje" target="_blank">@sexybiggetje@mastodon.social</a>, wicked. How much is the fish should be taken lightly, not much restrictions are imposed on the API. Core. Rough radical.</p>
             </div>
             <div class="col-sm-3"></div>
         </div>
@@ -155,6 +155,46 @@
                     <td>Implemented</td>
                 </tr>
             </table>
+            <h2><small>GraphQL queries</small></h2>
+            <p>Midnight crew, the graphql schema can be queried at /graphql and supports the following schema; this schema is also fetchable at <a href="/schema.gql">/schema.gql</a>.</p>
+            <pre><code class="language-graphql">scalar Date
+
+type Query {
+  random: Quote!
+  video: Video!
+  daily: Quote!
+  quote(id: ID!): Quote!
+}
+
+type Quote {
+  id: ID!
+  permalink: String!
+  hash: String!
+  text: String!
+  track: String!
+  album: String!
+  year: Int!
+  album_information: String!
+  album_cover: String!
+  album_thumb: String!
+  releasedate: Date!
+
+  # Track data is optional
+  track_cover: String
+  track_thumb: String
+  track_master: String
+
+  # Not all data has videos avaialable
+  videos: [Video]
+}
+
+type Video {
+  title: String!,
+  link: String!
+}</code></pre>
+
+            <p>Which could then possibly be queried using your favorite method with a query like this;</p>
+            <pre><code class="language-bash">curl -X POST -H "Content-Type: application/json" -d "{ \"query\": \"{ random { text track } }\" }" https://howmuchisthe.fish/graphql</code></pre>
         </section>
         <a name="usage"></a>
         <div class="clear padding-bottom"></div>
@@ -169,7 +209,7 @@
         <section>
             <h2>Data<small>The actual JSON in all it's glory</small></h2>
             <p>Every quote is returned in a non formatted JSON string, the resulting string contains the following data. Track and video data is only returned if found on discogs.</p>
-            <pre><code class="language-javascript">{
+            <pre><code class="language-json">{
   "id": "34",
   "permalink": "http:\/\/howmuchisthe.fish\/json\/perma\/34",
   "hash": "0160d2b85e18175df0877a31638831a75bc666b4",
@@ -198,7 +238,7 @@
         <div class="clear padding-bottom"></div>
         <section>
             <h2>Users<small>Implementations and libraries</small></h2>
-            <p>Have a public implementation? Great! Tweet <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> and get it listed here.</p>
+            <p>Have a public implementation? Great! Tweet <a href="https://twitter.com/bexysiggetje" target="_blank">@bexysiggetje</a> or toot <a href="https://mastodon.social/@sexybiggetje" target="_blank">@sexybiggetje@mastodon.social</a> and get it listed here.</p>
 
             <table class="horizontal preset">
                 <thead>
