@@ -25,7 +25,7 @@ type Quote {
   track_thumb: String
   track_master: String
 
-  # Not all data has videos avaialable
+  # Not all data have videos available
   videos: [Video]
 }
 
