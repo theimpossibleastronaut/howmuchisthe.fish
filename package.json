@@ -6,7 +6,7 @@
   "dependencies": {
     "disconnect": "^1.2.1",
     "graphql": "^14.0.2",
-    "restify": "^7.4.0",
+    "restify": "^8.5.1",
     "rita": "^1.3.86",
     "universal-analytics": "^0.4.20"
   },
