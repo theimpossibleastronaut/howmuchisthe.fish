@@ -1178,6 +1178,13 @@ var model = [
     },
 
     {
+        'text': 'You\'re my chick, you\'re my senora Bora! Bora! Bora!',
+        'track': 'Bora Bora Bora',
+        'album': 'Scooter Forever',
+        'year': '2017'
+    },
+
+    {
         'text': 'We\'re gonna rave \'til the end of the time',
         'track': 'God Save the Rave',
         'album': 'God Save the Rave',
@@ -1196,16 +1203,7 @@ var model = [
         'track': 'FCK 2020',
         'album': 'God Save the Rave',
         'year': '2021'
-    },
-
-    {
-        'text': 'You\'re my chick, you\'re my senora Bora! Bora! Bora!',
-        'track': 'Bora Bora Bora',
-        'album': 'Scooter Forever',
-        'year': '2017'
     }
-
-
 ];
 
 
