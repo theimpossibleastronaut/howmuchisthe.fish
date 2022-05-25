@@ -1175,9 +1175,35 @@ var model = [
         'track': 'Scarborough affair',
         'album': 'The Ultimate Aural Orgasm',
         'year': '2007'
+    },
+
+    {
+        'text': 'You\'re my chick, you\'re my senora Bora! Bora! Bora!',
+        'track': 'Bora Bora Bora',
+        'album': 'Scooter Forever',
+        'year': '2017'
+    },
+
+    {
+        'text': 'We\'re gonna rave \'til the end of the time',
+        'track': 'God Save the Rave',
+        'album': 'God Save the Rave',
+        'year': '2021'
+    },
+
+    {
+        'text': 'I am the captain My name is Dave Keep calm and behave',
+        'track': 'God Save the Rave',
+        'album': 'God Save the Rave',
+        'year': '2021'
+    },
+
+    {
+        'text': 'I don\'t give a penny Fuck 2020!',
+        'track': 'FCK 2020',
+        'album': 'God Save the Rave',
+        'year': '2021'
     }
-
-
 ];
 
 
