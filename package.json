@@ -8,7 +8,7 @@
     "graphql": "^15.5.0",
     "restify": "^8.5.1",
     "rita": "^2.4.0",
-    "universal-analytics": "^0.4.23"
+    "universal-analytics": "^0.5.3"
   },
   "devDependencies": {},
   "scripts": {
